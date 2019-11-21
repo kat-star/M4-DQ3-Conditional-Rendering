@@ -13,21 +13,27 @@ const MenuBar = (props) => {
 
   */
 
+  const handleClick = (event) => {
+    props.changeSelection(event.target)
+    
+  }
+
+
   return (
-    <div className="ui four item menu">
-      <a className="item active" id="profile">
-        <i className="user large icon" id="profile"/>
+    <div className="ui four item menu" >
+      <a className={"item " + (props.selection === "profile" ? "active" : null)} id="profile" onClick={handleClick} >
+        <i  className="user large icon" id="profile"/>
       </a>
 
-      <a className="item" id="photo">
+      <a className={"item " + (props.selection === "photo" ? "active" : null)} id="photo" onClick={handleClick}>
         <i className="photo large icon" id="photo"/>
       </a>
 
-      <a className="item" id="cocktail">
+      <a className={"item " + (props.selection === "cocktail" ? "active" : null)} id="cocktail" onClick={handleClick}>
         <i className="cocktail large icon" id="cocktail"/>
       </a>
 
-      <a className="item" id="pokemon"> 
+      <a className={"item " + (props.selection === "pokemon" ? "active" : null)} id="pokemon" onClick={handleClick}> 
         <i className=" themeisle large icon" id="pokemon"/>
       </a>
     </div>

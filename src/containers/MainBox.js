@@ -4,8 +4,41 @@ import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
 class MainBox extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      selection: "profile"
+    }
+  }
+
+  changeSelection = (newSelection) => {
+    this.setState({
+      selection: newSelection.id
+    })
+  }
+
 
   render() {
+
+    let detailsToDisplay;
+    
+    switch (this.state.selection) {
+      case "profile":
+        detailsToDisplay = <Profile />
+        break;
+      case "photo":
+        detailsToDisplay = <Photos />
+        break;
+      case "cocktail":
+        detailsToDisplay = <Cocktails />
+        break;
+      case "pokemon":
+        detailsToDisplay = <Pokemon />
+        break;
+      default:
+        detailsToDisplay = <Profile />
+        break;
+    }
 
     /*
 
@@ -13,11 +46,9 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
-
     return (
       <div>
-        <MenuBar />
+        <MenuBar changeSelection={this.changeSelection} selection={this.state.selection}/>
         {detailsToDisplay}
       </div>
     )
